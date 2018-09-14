@@ -1,0 +1,75 @@
+swagger: '2.0'
+info:
+  title: Generate charts API
+  description: >
+    API to generate charts.
+
+
+    Authorization: Some APIs are marked as requiring authorization. For those
+    APIs, the method defined will be invoked.
+  version: 1.0.0
+host: somethingsomething.herokuapp.com
+schemes:
+  - http
+basePath: /
+consumes:
+  - application/x-www-form-urlencoded
+  - application/json
+produces:
+  - application/json
+  - text/html
+x-implementation-module: ./serverModules/fakeBEImpl
+x-implementation-middleware:
+  - validate
+  - regenerateQuery
+  - normalize
+  - parseData
+x-implementation-final-middleware:
+  - errorHandler
+x-implementation-configuration: loadConfig
+paths:
+  /api/v1/users:
+    get:
+      summary: Prueba para movistarHome request User
+      x-implemented-in: getUser
+      description: Prueba para movistarHome request User
+      parameters:
+        - name: phone
+          description: Phone number
+          in: query
+          required: true
+          type: string
+      tags:
+        - Something
+      produces:
+        - text/html
+      responses:
+        '200':
+          description: Correct result
+          schema:
+            $ref: '#/definitions/HTML'
+        '503':
+          description: Service Temporarily Unavailable
+          schema:
+            $ref: '#/definictions/HTML'
+definitions:
+  SomeResult:
+    type: object
+    properties:
+      id:
+        type: string
+      somethingElse:
+        type: string
+  HTML:
+    type: string
+    description: HTML document of the room
+  ErrorInfo:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+      fields:
+        type: string

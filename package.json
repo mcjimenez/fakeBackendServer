@@ -1,0 +1,30 @@
+{
+  "name": "fakebackendserver",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "engines": {
+    "node": "8.1.x",
+    "npm": "5.0.x"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mcjimenez/fakeBackendServer"
+  },
+  "author": "Carmen J. Cabezas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mcjimenez/fakeBackendServer/issues"
+  },
+  "dependencies": {
+    "canvas": "1.6.*",
+    "chart": "<=2.5.*",
+    "express": "^4.15.3",
+    "jsdom": "9.8.*",
+    "swagger-boilerplate": "0.0.9"
+  }
+}
