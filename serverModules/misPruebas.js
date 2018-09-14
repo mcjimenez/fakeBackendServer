@@ -1,7 +1,7 @@
 module.exports = function(aLogLevel) {
   'use strict';
 
-  var reqNum = 0;
+  var reqNum = Number.MAX_SAFE_INTEGER - 4;
 
   const RESP_OK = '{"total":0,"results":[]}';
   const RESP_WRONG = 'Service Temporarily Unavailable https://api.es-pro.movistar-home.com/api/v1/users?phone=%2B34000000000';
@@ -12,6 +12,8 @@ module.exports = function(aLogLevel) {
     } else {
       aRes.status(200).send(RESP_OK);
     }
+
+    (reqNum > Number.MAX_SAFE_INTEGER - 5) && (reqNum = 0); 
   }
 
   return {
